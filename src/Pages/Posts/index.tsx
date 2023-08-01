@@ -15,8 +15,8 @@ const Posts = () => {
 
   return (
     <div className="posts-container">
-      {data?.data.length > 0
-        ? data?.data.map((post) => {
+      {data?.length > 0
+        ? data?.map((post) => {
             return (
               <Link to={`/post/${post.id}`} key={post.id}>
                 <li>{post.title}</li>

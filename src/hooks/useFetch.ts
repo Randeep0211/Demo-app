@@ -1,8 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { api, CanceledError } from "../api/apiClient";
+import { useEffect, useState } from "react";
+import { api, CanceledError, AxiosError } from "../api/apiClient";
 
-const useFetch = (endpoint) => {
-  const [data, setData] = useState();
+type Pagination = {
+  total: number;
+  pages: number;
+  page: number;
+  limit: number;
+};
+
+type MetaData = {
+  pagination: Pagination;
+};
+
+type FetchData<T> = {
+  meta: MetaData | null;
+  data: T[];
+};
+
+const useFetch = <T>(endpoint: string) => {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,15 +27,15 @@ const useFetch = (endpoint) => {
 
     const getData = async () => {
       try {
-        const response = await api.get(endpoint, {
+        const response = await api.get<FetchData<T>>(endpoint, {
           signal: controller.signal,
         });
-        setData(response?.data);
+        setData(response?.data?.data);
       } catch (error) {
         if (error instanceof CanceledError) {
           return;
         }
-        setError(error.message);
+        setError((error as AxiosError)?.message);
       } finally {
         setIsLoading(false);
       }

@@ -14,7 +14,7 @@ const Home = () => {
   }
   return (
     <ul className="user-details-container">
-      {data?.data.map((user) => {
+      {data?.map((user) => {
         return (
           <Link
             className="user-links"
