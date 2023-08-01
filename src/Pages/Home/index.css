@@ -1,0 +1,10 @@
+.user-links {
+  font-size: 1.2rem;
+  display: block;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 0.2rem;
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.4);
+  margin-top: 4rem;
+}

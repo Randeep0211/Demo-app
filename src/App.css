@@ -1,0 +1,22 @@
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+.user-details,
+.about-container,
+.contact-container,
+.posts-container {
+  display: block;
+  margin-top: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: calc(100vh - 5rem);
+}
+
+.posts-container {
+  margin-top: 15rem;
+}
