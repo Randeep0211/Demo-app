@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home, Posts, PostDetails } from "../Pages";
 import { getPostDetailsData } from "../Pages/PostDetails";
+import NotFound from "../Pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     path: "/post/:postId",
     element: <PostDetails />,
     loader: getPostDetailsData,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
